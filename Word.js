@@ -12,9 +12,19 @@ const Word = function(word){
         return this.word.join('');
     };
     this.checkGuess = function(guess){
+        let isCorrect = 'Incorrect!';
+        let result;
         this.word.forEach(function(letter){
-            letter.checkGuess(guess);
+            result = letter.checkGuess(guess);
+            if (result.correct && isCorrect === 'Incorrect!') {
+                if (result.guessedYet) {
+                    isCorrect = 'You already guessed that!';
+                } else {
+                    isCorrect = 'Correct!';
+                }
+            }
         });
+        return isCorrect;
     };
 };
 
