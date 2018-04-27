@@ -12,6 +12,7 @@ let playedAlready = false;
 let randomSelectionFromMovies;
 let movie;
 let numberOfGuessesLeft;
+let check;
 
 // Function Declarations
 
@@ -28,7 +29,7 @@ const guess = function(){
                 name: "guess"
             }
         ]).then(function(answer){
-            let check = movie.checkGuess(answer.guess);
+            check = movie.checkGuess(answer.guess);
             if (check.isCorrect === 'Incorrect!') {
                 numberOfGuesses--;
             }
