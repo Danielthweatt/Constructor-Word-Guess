@@ -14,6 +14,7 @@ const Word = function(word){
     this.checkGuess = function(guess){
         let isCorrect = 'Incorrect!';
         let result;
+        let guessingComplete = true;
         this.word.forEach(function(letter){
             result = letter.checkGuess(guess);
             if (result.correct && isCorrect === 'Incorrect!') {
@@ -23,8 +24,13 @@ const Word = function(word){
                     isCorrect = 'Correct!';
                 }
             }
+            if (!result.guessedYet) {
+                if (!result.correct) {
+                    guessingComplete = false;
+                }
+            }
         });
-        return isCorrect;
+        return {isCorrect: isCorrect, guessingComplete: guessingComplete};
     };
 };
 

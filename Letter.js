@@ -11,12 +11,12 @@ const Letter = function(letter){
         }
     };
     this.checkGuess = function(guess){
+        let guessedYet = this.guessedYet;
         if (guess === this.letter){
-            let guessedYet = this.guessedYet;
             this.guessedYet = true;
             return {correct: true, guessedYet: guessedYet};
         } else {
-            return {correct: false};
+            return {correct: false, guessedYet: guessedYet};
         }
     };
 };
