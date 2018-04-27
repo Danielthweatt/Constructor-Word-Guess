@@ -5,9 +5,9 @@ const Letter = function(letter){
     this.guessedYet = false;
     this.toString = function(){
         if (this.guessedYet) {
-            return this.letter;
+            return ` ${this.letter} `;
         } else {
-            return "_";
+            return ' _ ';
         }
     };
     this.checkGuess = function(guess){
