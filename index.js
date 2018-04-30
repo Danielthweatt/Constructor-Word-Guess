@@ -10,9 +10,9 @@ const wordArray = ['Jurassic Park', 'Independence Day', 'Indiana Jones',
 'The Rundown', 'Batman', 'Men in Black'];
 let playedAlready = false;
 let randomSelectionFromWordArray;
-let word;
+let wordObject;
 let numberOfGuessesLeft;
-let check;
+let checkGuess;
 
 // Function Declarations
 
@@ -29,13 +29,13 @@ const guess = function(){
                 name: "guess"
             }
         ]).then(function(answer){
-            check = word.checkGuess(answer.guess);
-            if (check.isCorrect === 'Incorrect!') {
+            checkGuess = wordObject.checkGuess(answer.guess);
+            if (checkGuess.isCorrect === 'Incorrect!') {
                 numberOfGuesses--;
             }
-            console.log(check.isCorrect);
-            console.log(word.displayWord());
-            if (check.guessingComplete) {
+            console.log(checkGuess.isCorrect);
+            wordObject.displayWord();
+            if (checkGuess.guessingComplete) {
                 console.log('Great job! You guessed it!');
                 inquire();
             } else {
@@ -53,9 +53,9 @@ const guess = function(){
 
 const playGame = function(){
     randomSelectionFromWordArray = selectRandomWord();
-    word = new Word(randomSelectionFromWordArray);
+    wordObject = new Word(randomSelectionFromWordArray);
     console.log('Here is your randomly selected word:');
-    console.log(word.displayWord());
+    wordObject.displayWord();
     numberOfGuesses = 12;
     guess();
 };

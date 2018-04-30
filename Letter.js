@@ -12,7 +12,7 @@ const Letter = function(letter){
     };
     this.checkGuess = function(guess){
         let guessedYet = this.guessedYet;
-        if (guess === this.letter){
+        if (guess.toLowerCase() === this.letter.toLowerCase()){
             this.guessedYet = true;
             return {correct: true, guessedYet: guessedYet};
         } else {

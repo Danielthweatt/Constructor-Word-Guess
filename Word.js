@@ -9,7 +9,7 @@ const Word = function(word){
         return new Letter(letter);
     });
     this.displayWord = function(){
-        return this.word.join('');
+        console.log(this.word.join(''));
     };
     this.checkGuess = function(guess){
         let isCorrect = 'Incorrect!';
