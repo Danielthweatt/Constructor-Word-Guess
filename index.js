@@ -5,19 +5,19 @@ const Word = require('./Word');
 
 // Global Variables
 
-const movies = ['Jurassic Park', 'Independence Day', 'Indiana Jones', 
+const wordArray = ['Jurassic Park', 'Independence Day', 'Indiana Jones', 
 'Star Wars', 'Star Trek', 'The Lord of the Rings', 'Avengers', 
 'The Rundown', 'Batman', 'Men in Black'];
 let playedAlready = false;
-let randomSelectionFromMovies;
-let movie;
+let randomSelectionFromWordArray;
+let word;
 let numberOfGuessesLeft;
 let check;
 
 // Function Declarations
 
-const selectRandomMovie = function(){
-    return movies[Math.floor(Math.random() * 10)];
+const selectRandomWord = function(){
+    return wordArray[Math.floor(Math.random() * 10)];
 };
 
 const guess = function(){
@@ -29,12 +29,12 @@ const guess = function(){
                 name: "guess"
             }
         ]).then(function(answer){
-            check = movie.checkGuess(answer.guess);
+            check = word.checkGuess(answer.guess);
             if (check.isCorrect === 'Incorrect!') {
                 numberOfGuesses--;
             }
             console.log(check.isCorrect);
-            console.log(movie.displayWord());
+            console.log(word.displayWord());
             if (check.guessingComplete) {
                 console.log('Great job! You guessed it!');
                 inquire();
@@ -52,10 +52,10 @@ const guess = function(){
 };
 
 const playGame = function(){
-    randomSelectionFromMovies = selectRandomMovie();
-    movie = new Word(randomSelectionFromMovies);
-    console.log('Here is your randomly selected movie:');
-    console.log(movie.displayWord());
+    randomSelectionFromWordArray = selectRandomWord();
+    word = new Word(randomSelectionFromWordArray);
+    console.log('Here is your randomly selected word:');
+    console.log(word.displayWord());
     numberOfGuesses = 12;
     guess();
 };
